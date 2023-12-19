@@ -25,9 +25,8 @@ def reverse_array_method_one(_array=[]):
     
 
 
-reverse_array_method_one(my_array)
+# reverse_array_method_one(my_array)
 # simpleReverse(my_array)
-
 
 
 
