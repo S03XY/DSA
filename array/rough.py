@@ -20,9 +20,10 @@ def fabonacci(n):
 
 
 
-while True:
-    number = int(input())
-    print(f"fabonacci is {fabonacci(number)}")
+# while True:
+#     number = int(input())
+#     print(f"fabonacci is {fabonacci(number)}")
+
 
 
 
