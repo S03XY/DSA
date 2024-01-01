@@ -23,7 +23,6 @@ def depth_of_tree(node:Node):
 
 
 if __name__ == "__main__":
-    
     root = Node("A")
     root.child.extend([new_node("B"),new_node("C")])
     root.child[0].child.extend([new_node("D"),new_node("E")])
