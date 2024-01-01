@@ -7,22 +7,25 @@ class BinaryNode:
         self.left = None
         self.right = None
 
+
+# for recursion there has to be a base condition for recursion to terminate
 def check_node_exists(node:BinaryNode,data:int):
-    print("checking node",node.data)
-
     if node.data == data:
-        return True
-
+        return True   
+    
     if node.left == None:
-        return False
+       return False
+    
     if node.right == None:
         return False
-    
-    response = check_node_exists(node.left,data)
+
+    response =  check_node_exists(node.left,data)
     if response:
         return True
-    response2 = check_node_exists(node.right,data)      
-    return response2    
+    response2 = check_node_exists(node.right,data)
+    return response2
+
+    
 
 if __name__ == "__main__":
 
