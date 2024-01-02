@@ -9,18 +9,16 @@ class Node:
         
 
 def find_sibling_of_node(node:Node,data):
+    parentNode = node
     for child in node.child:
         print(f"checking parent node {node.data} and child node {child.data}")
         if (child.data == data):
-            # print(f"found node {child.data}")
-            for c in node.child:
-                  if c.data != data:
-                      print(c.data,end=" ")
-
-
-            return 
+            print(f"found node {child.data}")
+            return node
         else:
-            find_sibling_of_node(child,data)
+            parentNode  = find_sibling_of_node(child,data)
+            if parentNode is not None:
+                return parentNode
 
         
 
@@ -33,5 +31,10 @@ if __name__ == "__main__":
     root.child[1].child = [Node(70),Node(80)]
     root.child[2].child = [Node(90),Node(100),Node(110)]
 
-    parent =  find_sibling_of_node(root,100)
-    # print(f"parent node is {parent.data}")
+
+    searchNodeData = 100
+    parent =  find_sibling_of_node(root,searchNodeData)
+    if parent is not None:
+        for node in parent.child:
+            if (node.data != searchNodeData):
+                print(node.data,end=" ")
