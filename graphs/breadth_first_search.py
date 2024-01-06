@@ -49,8 +49,7 @@ if __name__ == "__main__":
     g.addEdge(2,0)
     g.addEdge(2,3)
     g.addEdge(3,3)
-
-
+    
     print(f"graph is {g.graph}")
 
     searchIndex = 2
