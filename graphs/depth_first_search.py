@@ -31,29 +31,21 @@ class Graph:
         visted =set()
         self.DFSRecursion(nodeIndex,visted)    
 
-    def DFSNormal (self,i):
+    def DFSIterative (self,i):
         visted = [False for _ in range(max(g.graph)+1)]
         stack =[]
 
-        visted[i] = True
-        stack.insert(0,i)
-
-        print(f"stack {stack}")
+        stack.append(i)
 
         while stack:
-            poppedItem = stack.pop(0)
-            print(poppedItem,end=" ")
+            s = stack.pop()
+            if (not visted[s]):
+                print(s,end=" ")
+                visted[s]= True
 
-            for neighbor in g.graph[poppedItem]:
-                if visted[neighbor] == False:
-                    visted[neighbor] = True
-                    stack.insert(0,neighbor)
-
-
-
-
-            
-
+            for node in self.graph[s]:
+                if not visted[node]:
+                    stack.append(node)    
 
 if __name__ == "__main__":
     g= Graph()
@@ -71,10 +63,12 @@ if __name__ == "__main__":
 
     g.DFS(searchVertex)
     print("")
-    g.DFSNormal(searchVertex)
+    g.DFSIterative(searchVertex)
 
 
 
 
-
-
+# difference between depth first search and breadth first search 
+# BFS is a vertex based technique which uses queue data structure, node is pushed into queue and the marked visited then adjacent node are appended to the queue at last and then marked visited and the next vertex is choosen from the queue and the process is repeated
+    
+# DFS is a edge based technique in which a node is pushed into  visited and the edges are appended into the stack, the next edge is choosen from the stack and all it adjacent node are pushed into the stack and this process is repeated until there are no more edges then the elements are popped from stack after the there is no more edges left
