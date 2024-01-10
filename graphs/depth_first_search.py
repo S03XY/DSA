@@ -8,8 +8,6 @@
         remove it first stacked edge and see all its neighbour untill no nodes have any more edges left
 """
 
-
-
 from collections import defaultdict
 
 class Graph:
@@ -19,18 +17,42 @@ class Graph:
     def addEdge(self,u,v):
         self.graph[u].append(v)
 
-    def DFSRecursion(self,i,visited:set):
-        visited.add(i)
-        print(i,end=" ")
-        for neighbor in self.graph[i]:
+    def DFSRecursion(self,nodeIndex,visited:set):
+        visited.add(nodeIndex)
+        print(nodeIndex,end=" ")    
+
+        for neighbor in self.graph[nodeIndex]:
             if neighbor not in visited:
                 visited.add(neighbor)
                 self.DFSRecursion(neighbor,visited)
+        
 
-    def DFS(self,i):
-        visited = set()
-        self.DFSRecursion(i,visited)
+    def DFS(self,nodeIndex):
+        visted =set()
+        self.DFSRecursion(nodeIndex,visted)    
 
+    def DFSNormal (self,i):
+        visted = [False for _ in range(max(g.graph)+1)]
+        stack =[]
+
+        visted[i] = True
+        stack.insert(0,i)
+
+        print(f"stack {stack}")
+
+        while stack:
+            poppedItem = stack.pop(0)
+            print(poppedItem,end=" ")
+
+            for neighbor in g.graph[poppedItem]:
+                if visted[neighbor] == False:
+                    visted[neighbor] = True
+                    stack.insert(0,neighbor)
+
+
+
+
+            
 
 
 if __name__ == "__main__":
@@ -42,13 +64,14 @@ if __name__ == "__main__":
     g.addEdge(2,3)
     g.addEdge(3,3)
 
-    print(f"graph constructed {g.graph}")
-
     searchVertex = 2
 
-    print(f"Starting depth first search from index {searchVertex}")
+    print(f"graph constructed {g.graph}")
+    # print(f"Starting depth first search from index {searchVertex}")
 
     g.DFS(searchVertex)
+    print("")
+    g.DFSNormal(searchVertex)
 
 
 
