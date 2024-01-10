@@ -12,6 +12,8 @@ from collections import defaultdict
 
 
 # * Graph representation using adjacency list
+# * BFS use queue structure to store the edges i.e the new edges are appended at the end of the queue
+
 class Graph:
 
     def __init__(self):
